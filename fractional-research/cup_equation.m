@@ -87,29 +87,7 @@ end
 function [tspan, y] = SimCupFraq(x, T0, tmax, tair)
     %Simulate the cup behaviour with fractional order integration 
     h = 0.05;
-    
-    K = x(1);
-    a = x(2);
-    
-    tau = T0;
-    tspan = 0:h:tmax;
-    N = length(tspan);
-    y = zeros(1,N);
-    y(1) = tau;
-
-    revgamma = 1/gamma(a);
-    for i = 2:N
-        t = 0;
-        tau = T0;
-        T = h*(i + 1);
-        for j = 2:i
-            t = t + h;
-            coef = revgamma*(T - t)^(a - 1);
-            fun = @(x)coef*(K*(x - tair));
-            tau = RK4Step(fun, h, tau);
-        end
-        y(i) = tau;
-    end
+    [tspan, y] = fractode(@(t,y)(x(1)*(y - tair)), 0:h:tmax, T0, x(2));
 end
 
 function [tspan, y] = SimCup2(x, T0, tmax, tair)

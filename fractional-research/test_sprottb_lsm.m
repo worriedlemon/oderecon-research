@@ -16,8 +16,8 @@ B = EvalPoly(eye(mc), x, sigma);
 delta = 1e-1;
 B = (B'*B + delta*eye(mc))\B';
 
-alpha_n = 50;
-alpha_candidates = linspace(0.2, 0.9, alpha_n);
+alpha_n = 20;
+alpha_candidates = linspace(0.9, 1.1, alpha_n);
 
 min_err = +Inf;
 for alpha = alpha_candidates

@@ -2,6 +2,7 @@ func = @(x) x.^3;
 x = linspace(0.1, 5, 500)';
 fx = func(x);
 
+% method
 alphas = [0, 0.33, 0.66, 1, 1.5, 2];
 for alpha = alphas
     da_x = fractdiff(fx, x, alpha);
