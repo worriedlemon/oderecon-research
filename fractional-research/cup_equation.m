@@ -1,8 +1,8 @@
 load real_data\coffee.mat
 
 % Find a cooling cup equation
-t = t(1:79)' / 60;
-T = coffee_temp(1:79)';
+t = t / 60;
+T = coffee_temp;
 tair = t_amb;
 
 %Find ordinary integration optimization problem solution
